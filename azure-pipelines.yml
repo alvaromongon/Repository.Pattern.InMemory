@@ -48,6 +48,7 @@ stages:
     - script: dotnet publish --output $(Build.ArtifactStagingDirectory)
 
     - task: FileTransform@1
+      condition: eq(variables['RunIntegrationTests'], true)
       displayName: 'local.settings.json variables set'    
       inputs:
         folderPath: '$(Build.ArtifactStagingDirectory)'
@@ -68,7 +69,7 @@ stages:
       inputs:
         command: 'pack'
         configuration: $(BuildConfiguration)
-        packagesToPack: '**/Repository.Pattern.Azure.Storage.Table.csproj'
+        packagesToPack: '**/Repository.Pattern.Abstractions.csproj'
         packDirectory: '$(build.artifactStagingDirectory)'
         versioningScheme: byBuildNumber # https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/build/dotnet-core-cli?view=azure-devops#yaml-snippet
 
@@ -80,5 +81,4 @@ stages:
         packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
         nuGetFeedType: 'external'
         publishFeedCredentials: 'Nuget official'
-
 #    - task: PublishBuildArtifacts@1
