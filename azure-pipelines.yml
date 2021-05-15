@@ -69,7 +69,7 @@ stages:
       inputs:
         command: 'pack'
         configuration: $(BuildConfiguration)
-        packagesToPack: '**/Repository.Pattern.Abstractions.csproj'
+        packagesToPack: '**/Repository.Pattern.InMemory.csproj'
         packDirectory: '$(build.artifactStagingDirectory)'
         versioningScheme: byBuildNumber # https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/build/dotnet-core-cli?view=azure-devops#yaml-snippet
 
