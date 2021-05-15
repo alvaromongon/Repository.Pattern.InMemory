@@ -6,14 +6,13 @@
     <Authors>Alvaro Montero Gonzalez</Authors>
     <owners>Alvaro Montero Gonzalez</owners>    
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <Description>Repository pattern implementation for microsoft azure storage table. It is probably not the fastest one but maybe one of the most simple. The tradeof is the use of dynamic in order to map from model objects. to table entites.</Description>    
+    <Description>Repository pattern implementation for an in memory concurrent collections, very useful when working on POC that will later use a different implementation of the repository pattern abstraction</Description>
     <Copyright>Copyright 2019</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageIconUrl>https://www.nuget.org/Content/gallery/img/default-package-icon.svg</PackageIconUrl>
-    <PackageReleaseNotes>First Release.</PackageReleaseNotes>
-    <RepositoryUrl>https://github.com/alvaromongon/Microsoft.Azure.Storage.Table.Repository</RepositoryUrl>
+    <RepositoryUrl>https://github.com/alvaromongon/Repository.Pattern.InMemory</RepositoryUrl>
 
-    <PackageTags>netstandard;tablestorage;repository-pattern;azure-table-storage;azure-storage</PackageTags>  
+    <PackageTags>netstandard;repository-pattern;in-memory</PackageTags>  
 
 </PropertyGroup>
 
