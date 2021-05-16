@@ -42,7 +42,14 @@ namespace Repository.Pattern.InMemory
 
         public Task<TDomainModel> AddAsync(TDomainModel domainModel)
         {
-            var partitionKeyValues = GetValue(domainModel.PartitionKey, _repository);
+            var partitionKeyValues = GetValue(domainModel.PartitionKey, _repository, throwException: false);
+
+            if (partitionKeyValues == null)
+            {
+                _repository.TryAdd(domainModel.PartitionKey, new ConcurrentDictionary<string, TDomainModel>());
+                partitionKeyValues = GetValue(domainModel.PartitionKey, _repository, nameof(AddAsync));
+            }
+
             var success = partitionKeyValues.TryAdd(domainModel.RowKey, domainModel);
 
             if (!success)
@@ -92,7 +99,13 @@ namespace Repository.Pattern.InMemory
 
         public Task<TDomainModel> AddOrUpdateAsync(TDomainModel domainModel)
         {
-            var partitionKeyValues = GetValue(domainModel.PartitionKey, _repository, nameof(AddOrUpdateAsync));
+            var partitionKeyValues = GetValue(domainModel.PartitionKey, _repository, throwException: false);
+
+            if (partitionKeyValues == null)
+            {
+                _repository.TryAdd(domainModel.PartitionKey, new ConcurrentDictionary<string, TDomainModel>());
+                partitionKeyValues = GetValue(domainModel.PartitionKey, _repository, nameof(AddOrUpdateAsync));
+            }
             var result = partitionKeyValues.AddOrUpdate(domainModel.RowKey, domainModel, (s, d) => d);
 
             return Task.FromResult(result);
