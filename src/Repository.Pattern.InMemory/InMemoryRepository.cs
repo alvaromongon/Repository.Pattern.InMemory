@@ -8,7 +8,7 @@ using Repository.Pattern.Abstractions.Batches;
 using Repository.Pattern.Abstractions.Exceptions;
 using Repository.Pattern.Abstractions.Exceptions.Models;
 
-namespace Repository.Pattern.Azure.Storage.Table
+namespace Repository.Pattern.InMemory
 {
     /// <summary>
     /// In memory implementation of the repository pattern using a ConcurrentDictionary
