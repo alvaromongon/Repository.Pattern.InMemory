@@ -12,5 +12,5 @@ The domain object will know nothing about the storage layer and the effort to bu
 
 # Build and Test
 Building is easy since there it not special dependecies.
-There are no tests since this is a simple not productive piece of code
 
+There are a bunch of integration tests that you can run without any extra configuration

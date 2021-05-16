@@ -27,9 +27,13 @@ namespace Repository.Pattern.InMemory
 
         public Task<IEnumerable<TDomainModel>> GetAllAsync(string partitionKey)
         {
-            var partitionKeyValues = GetValue(partitionKey, _repository);
+            var partitionKeyValues = GetValue(partitionKey, _repository, throwException: false);
 
-            return Task.FromResult(partitionKeyValues.Values as IEnumerable<TDomainModel>);
+            var result = partitionKeyValues == null
+                ? new List<TDomainModel>()
+                : partitionKeyValues.Values as IEnumerable<TDomainModel>;
+
+            return Task.FromResult(result);
         }
 
         public Task<TDomainModel> GetAsync(string partitionKey, string rowKey)

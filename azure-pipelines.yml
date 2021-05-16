@@ -36,7 +36,7 @@ stages:
       inputs:
         command: test
         projects: '**/tests/**/*UnitTests.csproj'
-        arguments: '--configuration $(buildConfiguration)'      
+        arguments: '--configuration $(buildConfiguration)'
 
 - stage: integrationTests_and_nugetpush
   dependsOn: build_and_unitTests
@@ -74,7 +74,7 @@ stages:
         versioningScheme: byBuildNumber # https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/build/dotnet-core-cli?view=azure-devops#yaml-snippet
 
     - task: NuGetCommand@2
-      displayName: 'NuGet push'    
+      displayName: 'NuGet push'
       condition: eq(variables['PushPackage'], true)
       inputs:
         command: 'push'
