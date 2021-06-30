@@ -1,4 +1,3 @@
-[![Build Status](https://dev.azure.com/wtwd/Ease%20Maker/_apis/build/status/Repository.Pattern.Azure.Storage.Table?branchName=master)](https://dev.azure.com/wtwd/Ease%20Maker/_build/latest?definitionId=3&branchName=master)
 
 # Introduction 
 Repository pattern implementation for an in memory concurrent dictionary.
